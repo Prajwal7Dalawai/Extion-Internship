@@ -1,0 +1,77 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+nav {
+    width: 15%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(251, 237, 237);
+}
+
+nav div a {
+    color: black;
+    text-decoration: none;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    font-size: 120%;
+    transition: 0.5s ease-out;
+}
+
+nav div a:hover{
+    background-color:bisque
+}
+
+#content {
+    width: 85%;
+    background-color: rgb(29, 203, 145);
+    color: white;
+}
+
+.section {
+    font-size: 120%;
+    width: 70%;
+    border: 1px solid #ccc;
+    padding: 35px;
+}
+
+#sec{
+    width: max-content;
+    text-wrap: nowrap;
+}
+#web {
+    color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 160%;
+    display: inline-block;
+    animation: typing 3s ease-in-out alternate-reverse infinite;
+    /* position: relative; */
+    width: 0; /* Start with width 0 for typing effect */
+}
+
+#profile{
+    margin-top: 20px;
+    border-radius: 40%;
+    border: 3px solid black;
+    margin-left: 15px;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+#intro{
+    font-size: 160%; ;
+}

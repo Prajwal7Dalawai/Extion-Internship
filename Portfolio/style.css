@@ -38,8 +38,6 @@ nav div a:hover{
 
 #content {
     width: 85%;
-    background-color: rgb(29, 203, 145);
-    color: white;
     margin-left:29vh;
 }
 
@@ -50,9 +48,10 @@ nav div a:hover{
 
 .section {
     font-size: 120%;
-    width: 91%;
-    padding: 20px;
+    width: 94%;
+    padding-left: 60px;
     height: 100vh;
+    color: #212121;
     border: 2px solid black;
 }
 
@@ -103,10 +102,11 @@ nav div a:hover{
 }
 .intro{
   font-size: 120%;
+  background-color: rgb(29, 203, 145);
+  color: white;
     width: 91%;
     padding: 50px;
     height: 100vh;
-    border: 2px solid black;
 }
 
 .svgs a img{
@@ -345,4 +345,14 @@ nav div a:hover{
   .slider{
       height: 400px;
   }
+}
+
+/* Styles for about section*/
+#about p{
+  width: 85%;
+  font-size: 140%;
+}
+#about ul{
+  font-size: 140%;
+  list-style-type: disc;
 }

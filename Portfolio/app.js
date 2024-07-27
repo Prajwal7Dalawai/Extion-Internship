@@ -14,6 +14,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav div a");
+
+    const options = {
+        root: null, // Use the viewport as the container
+        rootMargin: "0px",
+        threshold: 0.5 // Trigger when 50% of the section is in view
+    };
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const navLink = document.querySelector(`nav div a[href="#${entry.target.id}"]`);
+
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                navLink.classList.add('active');
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
+
 //Education Part Functionalities
 let slider = document.querySelector('.slider .list');
 let items = document.querySelectorAll('.slider .list .item');

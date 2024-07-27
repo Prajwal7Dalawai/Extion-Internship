@@ -5,27 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prajwal S Dalawai</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./assets/profilepic2.jpg" type="image/x-icon">
 </head>
 <body>
     <nav>
         <dir><img id="profile" src="./assets/profilepic2.jpg" alt="Prajwal Dalawai" ></dir>
-        <div><a href="#" data-section="about">About</a></div>
-        <div><a href="#" data-section="education">Education</a></div>
-        <div><a href="#" data-section="services">Services</a></div>
-        <div><a href="#" data-section="contact">Contact</a></div>
+        
+        <div><a href="#about" data-section="about">About</a></div>
+        <div><a href="#education" data-section="education">Education</a></div>
+        <div><a href="#skills" data-section="services">Skills</a></div>
+        <div><a href="#projects" data-section="projects">Projects</a></div>
+        <div><a href="#contact" data-section="contact">Contact Info</a></div>
     </nav>
     <div id="content">
-        <section class="section">
+        <section class="intro">
+            <div id="innerbox">
             <p id="intro">Hi, I am <span style="background-color: rgb(1, 91, 61); padding: 2px;">Prajwal Dalawai</span>,</p>
-          <div id="sec"><div id="web">Web Developer</div></div>
+          <div id="sec"><div id="web">WEB DEVELOPER</div></div>
           <p>Self-driven, quick starter, passionate programmer with a curious mind, who enjoys solving a complex and real world problems</p>
-        </section>
+        </div>
+        <div class="svgs"> <a href="https://github.com/Prajwal7Dalawai" target="_blank"><img src="./assets/github.svg" alt="Github link" height="50px" width="50px"></a>
+        <a href="https://www.linkedin.com/in/sanjana-meshramkar/" target="_blank"><img src="./assets/linked-in.svg" alt="Linked-In Profile" height="55px" width="55px"></a></div><br>
+
+        <div id="btns">
+            <a href="#about"><button class="animated-button">
+                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                  ></path>
+                </svg>
+                <span class="text">Read More</span>
+                <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                  ></path>
+                </svg>
+              </button></a>
+              <a href="#contact"><button class="animated-button">
+                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                  ></path>
+                </svg>
+                <span class="text">Contact Info</span>
+                <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                  ></path>
+                </svg>
+              </button></a>
+        </div>
+    </section>
 
 
-        <section id="about" class="section">About</section>
+        <section id="about" class="section"><h2>About</h2></section>
 
 
-        <section id="education" class="section">Welcome to the Home Page
+        <section id="education" class="section"><h2>Education</h2>
             <div class="slider">
                 <div class="list">
                     <div class="item">
@@ -59,8 +97,9 @@
         </section>
         
 
-        <section id="services" class="section">Our Services</section>
-        <section id="contact" class="section">Contact Us</section>
+        <section id="skills" class="section"><h2>Skills</h2></section>
+        <section id="projects" class="section"><h2>Projects</h2></section>
+        <section id="contact" class="section"><h2>Contact Info</h2></section>
     </div>
     <script src="app.js"></script>
 </body>

@@ -8,21 +8,59 @@
 </head>
 <body>
     <nav>
-        <dir><img id="profile" src="./assets/photo.jpg" alt="Prajwal Dalawai" height="130px" width="110px"></dir>
+        <dir><img id="profile" src="./assets/profilepic2.jpg" alt="Prajwal Dalawai" ></dir>
         <div><a href="#" data-section="about">About</a></div>
-        <div><a href="#" data-section="home">Home</a></div>
+        <div><a href="#" data-section="education">Education</a></div>
         <div><a href="#" data-section="services">Services</a></div>
         <div><a href="#" data-section="contact">Contact</a></div>
     </nav>
     <div id="content">
-        <div id="home" class="section" style="display:none;">Welcome to the Home Page</div>
-        <div id="about" class="section">
-            <p id="intro">Hi, I am <span style="background-color: rgb(1, 91, 61); padding: 2px;">Prajwal Dalawai</span></p>
+        <section class="section">
+            <p id="intro">Hi, I am <span style="background-color: rgb(1, 91, 61); padding: 2px;">Prajwal Dalawai</span>,</p>
           <div id="sec"><div id="web">Web Developer</div></div>
           <p>Self-driven, quick starter, passionate programmer with a curious mind, who enjoys solving a complex and real world problems</p>
-        </div>
-        <div id="services" class="section" style="display:none;">Our Services</div>
-        <div id="contact" class="section" style="display:none;">Contact Us</div>
+        </section>
+
+
+        <section id="about" class="section">About</section>
+
+
+        <section id="education" class="section">Welcome to the Home Page
+            <div class="slider">
+                <div class="list">
+                    <div class="item">
+                        <img src="./assets/1.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/2.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/3.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/4.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/5.jpg" alt="">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button id="prev"><</button>
+                    <button id="next">></button>
+                </div>
+                <ul class="dots">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>   
+        </section>
+        
+
+        <section id="services" class="section">Our Services</section>
+        <section id="contact" class="section">Contact Us</section>
     </div>
     <script src="app.js"></script>
 </body>

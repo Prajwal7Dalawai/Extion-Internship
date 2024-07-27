@@ -1,23 +1,58 @@
-// app.js
+// Intro Part Functionalities
 document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('nav div a');
-    const sections = document.querySelectorAll('.section');
+        let currentSlide = 0;
+    
+    function moveSlide(direction) {
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        
+        const sliderTrack = document.querySelector('.slider-track');
+        sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            // Hide all sections
-            sections.forEach(section => {
-                section.style.display = 'none';
-            });
-
-            // Show the selected section
-            const sectionId = this.getAttribute('data-section');
-            document.getElementById(sectionId).style.display = 'block';
-        });
-    });
-
-    // Optionally, show the default section
-    document.getElementById('about').style.display = 'block';
 });
+
+//Education Part Functionalities
+let slider = document.querySelector('.slider .list');
+let items = document.querySelectorAll('.slider .list .item');
+let next = document.getElementById('next');
+let prev = document.getElementById('prev');
+let dots = document.querySelectorAll('.slider .dots li');
+
+let lengthItems = items.length - 1;
+let active = 0;
+next.onclick = function(){
+    active = active + 1 <= lengthItems ? active + 1 : 0;
+    reloadSlider();
+}
+prev.onclick = function(){
+    active = active - 1 >= 0 ? active - 1 : lengthItems;
+    reloadSlider();
+}
+let refreshInterval = setInterval(()=> {next.click()}, 3000);
+function reloadSlider(){
+    slider.style.left = -items[active].offsetLeft + 'px';
+    // 
+    let last_active_dot = document.querySelector('.slider .dots li.active');
+    last_active_dot.classList.remove('active');
+    dots[active].classList.add('active');
+
+    clearInterval(refreshInterval);
+    refreshInterval = setInterval(()=> {next.click()}, 3000);
+
+    
+}
+
+dots.forEach((li, key) => {
+    li.addEventListener('click', ()=>{
+         active = key;
+         reloadSlider();
+    })
+})
+window.onresize = function(event) {
+    reloadSlider();
+};
+
+

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav div a");
+    const asideLinks = document.querySelectorAll("aside div a");
 
     const options = {
         root: null, // Use the viewport as the container
@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            const navLink = document.querySelector(`nav div a[href="#${entry.target.id}"]`);
+            const asideLink = document.querySelector(`aside div a[href="#${entry.target.id}"]`);
 
             if (entry.isIntersecting) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                navLink.classList.add('active');
+                asideLinks.forEach(link => link.classList.remove('active'));
+                asideLink.classList.add('active');
             }
         });
     }, options);

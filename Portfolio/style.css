@@ -53,7 +53,7 @@ aside div{
     font-size: 120%;
     width: 94%;
     padding-left: 60px;
-    height: 100vh;
+    height: min-content;
     color: #212121;
     border: 2px solid black;
 }
@@ -283,6 +283,12 @@ aside div{
 
 
 /* Styles for the Education Part begins here */
+#education{
+  background: rgb(248, 244, 227);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
 .slider{
   width: 90%;
   max-width: 100vw;
@@ -290,6 +296,8 @@ aside div{
   margin-top: 30px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 30px;
+  border-radius: 20px;
 }
 .slider .list{
   position: absolute;
@@ -353,31 +361,86 @@ aside div{
   }
 }
 
-/* Styles for about section*/
-#about p{
-  width: 85%;
-  font-size: 140%;
-  background-color: rgb(246, 242, 237);
-}
-#about ul{
-  font-size: 140%;
-  width: max-content;
-  list-style-type: disc;
-  background-color: rgb(237, 246, 242);
-}
-
 #first{
-  background-image: url('./assets/1.jpg');
+  background-image: url('./assets/St\ Anns.jpeg');
+  color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #second{
-  background-image: url('./assets/2.jpg');
+  background-image: url('./assets/St\ Antony.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #third{
-  background-image: url('./assets/3.jpg');
+  background-image: url('./assets/Mahesh\ PU.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #fourth{
-  background-image: url('./assets/4.jpg');
+  background-image: url('./assets/SDM.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-#fifth{
-  background-image: url('./assets/5.jpg');
+
+.insideSection{
+  background-color: #2121219a;
+  height: inherit;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  align-content: flex-end;
+
 }
+
+.head{
+  font-size: 200%;
+  font-weight: 600;
+}
+.address{
+  font-size: 150%;
+}
+.result{
+  font-size: 150%;
+}
+.batch{
+  font-size: 150%;
+}
+
+/* Styles for about section*/
+#about{
+background: rgb(248, 244, 227);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+#about p{
+  overflow: hidden;
+  width: 85%;
+  font-size: 120%;
+  color: rgb(90, 87, 102);
+  /* background-color: rgb(246, 242, 237); */
+}
+#about ul{
+  font-size: 120%;
+  width: 60%;
+  list-style-type: disc;
+  color:rgb(90, 87, 102) ;
+  /* background-color: rgb(237, 246, 242); */
+}
+#about ul li{
+  margin-bottom: 10px;
+}
+#aboutHead{
+  font-size: 200%;
+  color: rgb(72, 67, 92);
+}
+
+#skills{
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background: linear-gradient(0deg, rgba(152,184,189,1) 11%, rgba(236,236,247,1) 48%);
+  background-image: url('https://cdn.pixabay.com/photo/2023/04/19/03/58/flower-7936549_640.png');
+}
+/*  */

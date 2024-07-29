@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll(".section");
     const asideLinks = document.querySelectorAll("aside div a");
 
     const options = {
@@ -57,7 +57,7 @@ prev.onclick = function(){
     active = active - 1 >= 0 ? active - 1 : lengthItems;
     reloadSlider();
 }
-let refreshInterval = setInterval(()=> {next.click()}, 3000);
+let refreshInterval = setInterval(()=> {next.click()}, 6000);
 function reloadSlider(){
     slider.style.left = -items[active].offsetLeft + 'px';
     // 
@@ -66,7 +66,7 @@ function reloadSlider(){
     dots[active].classList.add('active');
 
     clearInterval(refreshInterval);
-    refreshInterval = setInterval(()=> {next.click()}, 3000);
+    refreshInterval = setInterval(()=> {next.click()}, 6000);
 
     
 }
@@ -80,5 +80,21 @@ dots.forEach((li, key) => {
 window.onresize = function(event) {
     reloadSlider();
 };
+
+// window.addEventListener('DOMContentLoaded',()=>{
+//     let first = document.getElementById('about');
+//     const observer = new IntersectionObserver((entries) => {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting) {
+//                 first.classList.add('firstSection');
+//                 observer.unobserve(entry.target); // Optional: Stop observing once animated
+//             }else {
+//                 entry.target.classList.
+//             }
+//         });
+//     }, { threshold: 1 }); // Trigger when 20% of the element is visible
+
+//     observer.observe(first);
+// });
 
 

@@ -37,6 +37,7 @@ aside div a:hover{
 aside div{
   width: 100%;
   align-items: center;
+  margin: 0;
 }
 
 #content {
@@ -50,12 +51,12 @@ aside div{
 }
 
 .section {
+  background: rgb(248, 244, 227);
     font-size: 120%;
-    width: 94%;
+    width: 95%;
     padding-left: 60px;
     height: min-content;
     color: #212121;
-    border: 2px solid black;
 }
 
 #sec{
@@ -85,12 +86,6 @@ aside div{
     width: 70%;
 }
 
-/* #profile:hover {
-    box-shadow: 0 0 20px rgba(233, 132, 132, 0.8), 
-    0 0 30px rgba(71, 67, 67, 0.8), 
-    0 0 40px rgba(255, 255, 255, 0.4), 
-    0 0 50px rgba(255, 255, 255, 0.2);
-    } */
 
 @keyframes typing {
     from {
@@ -284,10 +279,13 @@ aside div{
 
 /* Styles for the Education Part begins here */
 #education{
-  background: rgb(248, 244, 227);
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  margin-top: 0;
+}
+#eduHead{
+  margin-top: 0;
 }
 .slider{
   width: 90%;
@@ -418,6 +416,7 @@ background: rgb(248, 244, 227);
   overflow: hidden;
   width: 85%;
   font-size: 120%;
+  margin-bottom: 0;
   color: rgb(90, 87, 102);
   /* background-color: rgb(246, 242, 237); */
 }
@@ -431,16 +430,38 @@ background: rgb(248, 244, 227);
 #about ul li{
   margin-bottom: 10px;
 }
-#aboutHead{
+.heading{
   font-size: 200%;
   color: rgb(72, 67, 92);
+  margin: 0;
+  padding: 20px;
 }
 
-#skills{
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background: linear-gradient(0deg, rgba(152,184,189,1) 11%, rgba(236,236,247,1) 48%);
-  background-image: url('https://cdn.pixabay.com/photo/2023/04/19/03/58/flower-7936549_640.png');
+.icons img {
+  height: 80px;
+  width: 80px;
 }
-/*  */
+.icons {
+  display: flex;
+  justify-content: flex-start;
+}
+.icons img{
+  margin-right: 35px;
+}
+.skillSubHead p{
+  font-size: 140%;
+  font-weight: 300;
+}
+.skillSubHead{
+  display: flex;
+  flex-direction: column;
+}
+#skills hr{
+  margin: 0;
+}
+
+/* Styles for Projects Part*/
+#projects h2{
+  margin-top: 0;
+}
+

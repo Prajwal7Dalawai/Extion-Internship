@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const sections = document.querySelectorAll(".section");
+    const sections = document.querySelectorAll('.section');
     const asideLinks = document.querySelectorAll("aside div a");
 
     const options = {
         root: null, // Use the viewport as the container
         rootMargin: "0px",
-        threshold: 0.5 // Trigger when 50% of the section is in view
+        threshold: 0.3 // Trigger when 50% of the section is in view
     };
 
     const observer = new IntersectionObserver(entries => {
@@ -80,21 +80,5 @@ dots.forEach((li, key) => {
 window.onresize = function(event) {
     reloadSlider();
 };
-
-// window.addEventListener('DOMContentLoaded',()=>{
-//     let first = document.getElementById('about');
-//     const observer = new IntersectionObserver((entries) => {
-//         entries.forEach(entry => {
-//             if (entry.isIntersecting) {
-//                 first.classList.add('firstSection');
-//                 observer.unobserve(entry.target); // Optional: Stop observing once animated
-//             }else {
-//                 entry.target.classList.
-//             }
-//         });
-//     }, { threshold: 1 }); // Trigger when 20% of the element is visible
-
-//     observer.observe(first);
-// });
 
 

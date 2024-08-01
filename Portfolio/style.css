@@ -5,7 +5,6 @@ body {
 }
 
 
-
 aside {
     min-width: 15%;
     height: 100vh;
@@ -22,8 +21,10 @@ aside div a {
     padding: 10px;
     text-align: center;
     display: block;
-    font-size: 120%;
+    font-size: 140%;
     transition: 0.3s ease-out;
+    font-family: 'Mukta';
+    font-weight: 400;
 }
 
 aside div a:hover{
@@ -68,9 +69,15 @@ aside div{
     overflow: hidden;
     white-space: nowrap;
     font-size: 160%;
+    font-family: 'Fjalla One';
     display: inline-block;
     animation: typing 3s ease alternate-reverse infinite;
     width: 0;
+}
+#Self-driven{
+  font-family: 'Kalam';
+  font-size: 120%;
+  font-weight: 500;
 }
 
 #profile{
@@ -78,7 +85,7 @@ aside div{
     margin-top: 20px;
     border-radius: 50%;
     border: 3px;
-    margin-left: 0px;
+    margin-left: 10px;
     box-shadow: 0 0 0 5px rgba(224, 187, 112, 0.947);
     min-height: 80px;
     min-width: 50px;
@@ -97,7 +104,8 @@ aside div{
 }
 
 #intro{
-    font-size: 160%; ;
+    font-size: 180%; 
+    font-family: 'Work sans';
 }
 .intro{
   box-sizing: content-box;
@@ -388,7 +396,7 @@ aside div{
   color: #fff;
   text-align: center;
   align-content: flex-end;
-
+  font-family: 'Rubik';
 }
 
 .head{
@@ -418,6 +426,7 @@ background: rgb(248, 244, 227);
   font-size: 120%;
   margin-bottom: 0;
   color: rgb(90, 87, 102);
+  font-family: 'Rubik';
   /* background-color: rgb(246, 242, 237); */
 }
 #about ul{
@@ -425,16 +434,19 @@ background: rgb(248, 244, 227);
   width: 60%;
   list-style-type: disc;
   color:rgb(90, 87, 102) ;
+  font-family: 'Rubik';
   /* background-color: rgb(237, 246, 242); */
 }
 #about ul li{
   margin-bottom: 10px;
 }
 .heading{
-  font-size: 200%;
+  font-size: 300%;
   color: rgb(72, 67, 92);
   margin: 0;
-  padding: 20px;
+  padding-top: 30px;
+  font-family: 'Almarai';
+  font-weight: 900;
 }
 
 .icons img {
@@ -450,7 +462,7 @@ background: rgb(248, 244, 227);
 }
 .skillSubHead p{
   font-size: 140%;
-  font-weight: 300;
+  font-family: 'Rubik';
 }
 .skillSubHead{
   display: flex;
@@ -463,5 +475,36 @@ background: rgb(248, 244, 227);
 /* Styles for Projects Part*/
 #projects h2{
   margin-top: 0;
+}
+
+/* Styles for Contact Part*/
+#contact{
+  height: 100vh;
+}
+
+#contact h2{
+  margin-top: 0;
+  padding-top: 15px;
+}
+
+#contact p{
+  font-size: 160%;
+  font-family: 'Rubik';
+}
+#links{
+  display: flex;
+  justify-content: flex-start;
+}
+#links a img{
+  height: 60px;
+  margin-left: 30px;
+  width:60px;
+  transition: 0.5s ease;
+}
+#links a img:hover{
+  box-shadow: 2px 2px 2px 2px  rgba(143, 136, 136, 0.411);
+  width: 65px;
+  height: 65px;
+  border-radius: 20px ;
 }
 

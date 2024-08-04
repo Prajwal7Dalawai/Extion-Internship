@@ -1,17 +1,26 @@
 /* Styles for Intro part begins here */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    display: flex;
+    justify-content: flex-start;
 }
 
 
 aside {
-    min-width: 15%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(251, 237, 237);
-    position:fixed;
+  width: 15%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  background-color: rgb(251, 237, 237);
+  position:fixed;
+  z-index: 10;
 }
 
 aside div a {
@@ -35,15 +44,21 @@ aside div a:hover{
                         0 0 50px rgba(255, 255, 255, 0.2);
    font-size: 130%;
 }
+#sidebar-active, .open-sidebar-button, .close-sidebar-button{
+  display: none;
+}
+
 aside div{
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
 }
 
 #content {
-    width: 85%;
-    margin-left: 220px;
+    margin-left: 15%;
 }
 
 #innerbox{
@@ -54,7 +69,7 @@ aside div{
 .section {
   background: rgb(248, 244, 227);
     font-size: 120%;
-    width: 95%;
+    width: 100%;
     padding-left: 60px;
     height: min-content;
     color: #212121;
@@ -81,16 +96,15 @@ aside div{
 }
 
 #profile{
-  align-self: center;
-    margin-top: 20px;
+    margin: 20px 0px 20px 0px;
     border-radius: 50%;
     border: 3px;
-    margin-left: 10px;
+    
     box-shadow: 0 0 0 5px rgba(224, 187, 112, 0.947);
     min-height: 80px;
     min-width: 50px;
     max-height: 190px;
-    width: 70%;
+    width: 7rem;
 }
 
 
@@ -106,16 +120,16 @@ aside div{
 #intro{
     font-size: 180%; 
     font-family: 'Work sans';
+    margin-bottom: 20px;
 }
 .intro{
   box-sizing: content-box;
   font-size: 120%;
   background-color: rgb(29, 203, 145);
   color: white;
-    width: 89%;
-    padding: 50px;
+  padding-top: 10vh;
     padding-left: 80px;
-    height: 100vh;
+    height: 90vh;
 }
 
 .svgs a img{
@@ -207,7 +221,6 @@ aside div{
   position: absolute;
   width: 24px;
   fill: greenyellow;
-  z-index: 9;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -361,11 +374,7 @@ aside div{
 .slider .dots li.active{
   width: 30px;
 }
-@media screen and (max-width: 768px){
-  .slider{
-      height: 400px;
-  }
-}
+
 
 #first{
   background-image: url('./assets/St\ Anns.jpeg');
@@ -427,7 +436,6 @@ background: rgb(248, 244, 227);
   margin-bottom: 0;
   color: rgb(90, 87, 102);
   font-family: 'Rubik';
-  /* background-color: rgb(246, 242, 237); */
 }
 #about ul{
   font-size: 120%;
@@ -452,17 +460,17 @@ background: rgb(248, 244, 227);
 .icons img {
   height: 80px;
   width: 80px;
+  margin: 5px 35px 10px 0px;
 }
 .icons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
-}
-.icons img{
-  margin-right: 35px;
 }
 .skillSubHead p{
   font-size: 140%;
   font-family: 'Rubik';
+  margin: 10px;
 }
 .skillSubHead{
   display: flex;
@@ -489,6 +497,7 @@ background: rgb(248, 244, 227);
 
 #contact p{
   font-size: 160%;
+  margin: 30px 0 30px 0;
   font-family: 'Rubik';
 }
 #links{
@@ -506,5 +515,104 @@ background: rgb(248, 244, 227);
   width: 65px;
   height: 65px;
   border-radius: 20px ;
+}
+
+@media(max-width:820px) {
+
+.close-sidebar-button{
+  display: block;
+}
+
+.open-sidebar-button{
+  display: block;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+}
+
+aside{
+  display: none;
+  width: max-content;
+  height: 100vh;
+}
+
+.links-container{
+  display: none;
+  height: inherit;
+  justify-content:flex-start;
+  width: 250px;
+  z-index: 10;
+  overflow: hidden;
+  top: 0px;
+  left: 0px;
+}
+
+.intro{
+  box-sizing: content-box;
+  font-size: 120%;
+  background-color: rgb(29, 203, 145);
+  color: white;
+  height: 90vh;
+  padding: 10vh 0px 10px 10%;
+  height: max-content;
+}
+
+#content {
+  margin-left: 0;
+}
+
+.section {
+  background: rgb(248, 244, 227);
+    font-size: 110%;
+    width: 100%;
+    text-wrap: wrap;
+    height: max-content;
+    color: #212121;
+}
+#innerbox{
+  width: 100%;
+  font-size: 100%;
+}
+#intro{
+  font-size: 130%;
+  width: 100%;
+}
+#btns{
+  display: flex;
+  width: 30px;
+  font-size: 100%;
+}
+.head, .address, .batch, .result{
+  font-size: 80%;
+  text-wrap: wrap;
+  margin-left: 10px;
+}
+#contact p{
+  font-size: 140%;
+}
+#skillSubHead{
+  font-size: 100%;
+}
+.slider{
+  width: 95%;
+  height: 500px;
+}
+hr{
+  display: none;
+}
+
+#sidebar-active:checked ~ .links-container,aside{
+  display: block;
+  transition: 1s ease;
+}
+
+#sidebar-active:checked ~ .open-sidebar-button{
+  display: none;
+  transition: 1s ease;
+}
+
+#contact p{
+  font-size: 130%;
+}
 }
 

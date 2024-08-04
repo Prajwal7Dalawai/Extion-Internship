@@ -19,13 +19,27 @@
 </head>
 <body>
     <aside>
-        <dir><img id="profile" src="./assets/profilepic2.jpg" alt="Prajwal Dalawai" ></dir>
+      <input type="checkbox" id="sidebar-active">
+      <label for="sidebar-active" class="open-sidebar-button">
+<svg width="32px" height="32px" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+      </label>
+      <label for="sidebar-active" id="overlay"></label><div class="links-container">
+      <label for="sidebar-active" class="close-sidebar-button">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="Menu / Close_LG">
+          <path id="Vector" d="M21 21L12 12M12 12L3 3M12 12L21.0001 3M12 12L3 21.0001" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          </svg>
+      </label>
+        <div><img id="profile" src="./assets/profilepic2.jpg" alt="Prajwal Dalawai" ></div>
         
-        <div><a href="#about" data-section="about">About</a></div>
-        <div><a href="#education" data-section="education">Education</a></div>
-        <div><a href="#skills" data-section="skills">Skills</a></div>
-        <div><a href="#contact" data-section="contact">Contact Info</a></div>
-    </aside>
+        <div><a href="#about">About</a></div>
+        <div><a href="#education">Education</a></div>
+        <div><a href="#skills">Skills</a></div>
+        <div><a href="#contact">Contact Info</a></div>
+      </div></aside>
     <div id="content">
         <section class="intro">
             <div id="innerbox">

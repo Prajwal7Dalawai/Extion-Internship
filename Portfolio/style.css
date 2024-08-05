@@ -34,6 +34,7 @@ aside div a {
     transition: 0.3s ease-out;
     font-family: 'Mukta';
     font-weight: 400;
+    width: 100%;
 }
 
 aside div a:hover{
@@ -516,6 +517,90 @@ background: rgb(248, 244, 227);
   height: 65px;
   border-radius: 20px ;
 }
+
+/* Styles for Projects Part*/
+
+#subProject{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.innerProject{
+  width: 300px;
+  height: 300px;
+  margin: 50px;
+  border: 3px solid black;
+  border-radius: 30px;
+  transition: 0.4s ease-in;
+}
+
+@keyframes popup {
+  from{
+    height: 0px;
+    width: max-content;
+  }
+  to{
+    height: fit-content;
+    width: max-content;
+  }
+}
+
+.opaq{
+  height: inherit;
+  background-color: #212121ad;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0px 10px 0px;
+}
+
+.desc{
+  color: white;
+  font-size: 130%;
+  animation: popup 1s ease 0s 1;
+}
+
+.innerProject:hover{
+  width: 320px;
+  height: 320px;
+}
+
+.projHead{
+  color: white;
+  font-size: 120%;
+  font-weight: 900;
+}
+
+.desc ul{
+  padding-left: 40px
+}
+
+#todo{
+  background-image: url('./assets/todo.jpeg');
+  background-size: cover;
+  overflow: hidden;
+}
+
+#calc{
+  background-image: url('./assets/calculator.jpeg');
+  background-size: cover;
+  overflow: hidden;
+}
+
+#prajgpt{
+  background-image: url('./assets/prajgpt.png');
+  background-size: cover;
+  overflow: hidden;
+}
+
+#simon{
+  background-image: url('./assets/simon.png');
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* Responsive Styles*/
 
 @media(max-width:820px) {
 

@@ -4,16 +4,19 @@ let items = document.querySelectorAll('.slider .list .item');
 let next = document.getElementById('next');
 let prev = document.getElementById('prev');
 let dots = document.querySelectorAll('.slider .dots li');
+let start = document.querySelector('#start button');
+prev.disabled = true;
 
 let lengthItems = items.length - 1;
 let active = 0;
-next.onclick = function(){
-    active = active + 1 <= lengthItems ? active + 1 : 0;
-    reloadSlider();
-}
 prev.onclick = function(){
     active = active - 1 >= 0 ? active - 1 : lengthItems;
     reloadSlider();
+}
+next.onclick = function(){
+    active = active + 1 <= lengthItems ? active + 1 : 0;
+    reloadSlider();
+    loadQuestion();
 }
 function reloadSlider(){
     slider.style.left = -items[active].offsetLeft + 'px';
@@ -23,118 +26,93 @@ function reloadSlider(){
     dots[active].classList.add('active');
 }
 
-dots.forEach((li, key) => {
-    li.addEventListener('click', ()=>{
-         active = key;
-         reloadSlider();
-    })
-});
-//Sliding functions ends here
+start.onclick = function(){
+    active = active + 1 <= lengthItems ? active + 1 : 0;
+    reloadSlider();
+    loadQuestion();
+    next.disabled = false;
+    prev.disabled = false;
+}
 
 
 // Quiz functions
 const questions = [
     {
-        question: "What is the capital of France?",
-        choices: ["Berlin", "Madrid", "Paris", "Lisbon"],
-        correctAnswer: 2
+        "question": "What is the Heisenberg Uncertainty Principle?",
+        "choices": ["Energy conservation", "Speed of light", "Position and momentum", "Atomic structure"],
+        "correctAnswer": 2
     },
     {
-        question: "What is 2 + 2?",
-        choices: ["3", "4", "5", "6"],
-        correctAnswer: 1
+        "question": "What does Fermat's Last Theorem state?",
+        "choices": ["Even primes", "No solution for n > 2", "Right triangle", "Prime factors"],
+        "correctAnswer": 1
     },
     {
-        question: "Who wrote 'To Kill a Mockingbird'?",
-        choices: ["Harper Lee", "J.K. Rowling", "Ernest Hemingway", "Mark Twain"],
-        correctAnswer: 0
+        "question": "In Dante's 'Divine Comedy,' what are the three parts of the journey through the afterlife?",
+        "choices": ["Heaven, Hell, Earth", "Limbo, Purgatory, Heaven", "Inferno, Purgatorio, Paradiso", "Hades, Elysium, Tartarus"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "Who was the first emperor of the Roman Empire?",
+        "choices": ["Julius Caesar", "Augustus", "Nero", "Constantine"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "What is the significance of the Higgs boson particle?",
+        "choices": ["Nuclear force", "Electromagnetic force", "Provides mass", "Dark matter"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "What is the molecular geometry of a water (H2O) molecule?",
+        "choices": ["Linear", "Trigonal planar", "Tetrahedral", "Bent"],
+        "correctAnswer": 3
+    },
+    {
+        "question": "What is the time complexity of the quicksort algorithm in the average case?",
+        "choices": ["O(n^2)", "O(n log n)", "O(log n)", "O(n)"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "What is the function of ribosomes in a cell?",
+        "choices": ["Energy production", "Protein synthesis", "DNA replication", "Cell division"],
+        "correctAnswer": 1
+    },
+    {
+        "question": "What does the term 'stagflation' refer to?",
+        "choices": ["High inflation, high unemployment", "Low inflation, high growth", "High inflation, high growth", "Low inflation, high unemployment"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "Who wrote 'The Republic,' a work concerning justice and the ideal state?",
+        "choices": ["Aristotle", "Plato", "Socrates", "Descartes"],
+        "correctAnswer": 1
     }
 ];
 
-let currentQuestionIndex = 0;
-let score = 0;
-let timeLeft = 60;
-let timer;
-let qno = 0; //Question number
-let qstn = document.querySelectorAll('.question');
-let btn = document.querySelectorAll('.ansButton button');
 
+let divisions = document.querySelectorAll('.innerItem');
+let count = 1;
+let questionIndex = 0;
 
-// function loadQuestion() {
-//     for(var i=0; i<questions.length;i++){
-//     if (currentQuestionIndex < questions.length) {
-//         const questionObj = questions[currentQuestionIndex];
-//         document.querySelectorAll('.question')[qno].innerText = questionObj.question;
-//         const choices = document.querySelectorAll('.ansButton button');
-//         choices.forEach((button, index) => {
-//             button.innerText = questionObj.choices[index];
-//         });
-//     } else {
-//         endQuiz();
-//     }
-// }
-// }
-
-function checkAnswer(choiceIndex) {
-    const questionObj = questions[currentQuestionIndex];
-    if (choiceIndex === questionObj.correctAnswer) {
-        score++;
-        document.getElementById('feedback').innerText = "Correct!";
-    } else {
-        document.getElementById('feedback').innerText = "Wrong!";
-    }
-    document.getElementById('score').innerText = `Score: ${score}`;
-    deactivateButtons();
-    currentQuestionIndex++;
-    setTimeout(() => {
-        document.getElementById('feedback').innerText = "";
-        loadQuestion();
-        activateButtons();
-    }, 1000);
-}
-
-function deactivateButtons() {
-    const choices = document.querySelectorAll('.choice');
-    choices.forEach(button => {
-        button.disabled = true;
-    });
-}
-
-function activateButtons() {
-    const choices = document.querySelectorAll('.choice');
-    choices.forEach(button => {
-        button.disabled = false;
-    });
-}
-
-function startTimer() {
-    timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById('timer').innerText = `Time left: ${timeLeft}`;
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            endQuiz();
-        }
-    }, 1000);
-}
-
-function endQuiz() {
-    document.getElementById('quiz').innerHTML = `<h2>Quiz Over!</h2><p>Your final score is ${score}</p>`;
-}
-
-window.onload = () => {
-    //loadQuestion();
-    qstn.forEach((q)=>{
-        if (currentQuestionIndex < questions.length) {
-            const questionObj = questions[currentQuestionIndex];
-            q.innerText = questionObj.question;
-            btn.forEach((button, index) => {
-                button.innerText = questionObj.choices[index];
-            });
-            currentQuestionIndex++;
-        }
+function loadQuestion() {
+    if(count<11 && questionIndex<10){
+    var subDiv = divisions[count];
+    var qstn = subDiv.getElementsByClassName('question')[0]; // Access the first element
+    var qstnObj = questions[questionIndex];
+    qstn.innerText = qstnObj.question;
     
+    var buttons = subDiv.querySelectorAll('.ansButton button');
+    buttons.forEach((button, i) => {
+        button.innerText = qstnObj.choices[i];
     });
-    startTimer();
-};
+
+    count++;
+    questionIndex++;
+}
+else{
+    count = 1;
+    questionIndex = 0;
+}
+}
+
 

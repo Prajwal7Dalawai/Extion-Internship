@@ -93,7 +93,7 @@
     border-radius: 30px;
     cursor: pointer;
 }
-button:disabled {
+.button:disabled {
     background: #cccccc;
     cursor: not-allowed;
 }

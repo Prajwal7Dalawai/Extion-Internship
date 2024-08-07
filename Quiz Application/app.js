@@ -158,9 +158,6 @@ function evaluateAndUpdate(buttons, qstnObj) {
                     button.style.background = "green";
                     disableButtons(buttons); // Disable only the buttons for this question
                 }, 250);
-                setTimeout(() => {
-                    loadNext();
-                }, 500);
 
             } else {
                 score -= 1;

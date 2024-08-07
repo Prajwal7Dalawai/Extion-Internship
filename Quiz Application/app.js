@@ -160,7 +160,7 @@ function evaluateAndUpdate(buttons, qstnObj) {
                 }, 250);
                 setTimeout(() => {
                     loadNext();
-                }, 2000);
+                }, 500);
 
             } else {
                 score -= 1;

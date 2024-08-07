@@ -9,31 +9,48 @@ prev.disabled = true;
 
 let lengthItems = items.length - 1;
 let active = 0;
-prev.onclick = function(){
+let answerSelected = false;
+
+prev.onclick = function() {
     active = active - 1 >= 0 ? active - 1 : lengthItems;
     reloadSlider();
 }
-next.onclick = function(){
+
+next.onclick = function() {
+    prev.disabled = false;
+
+    // Reduce score if no answer was selected
+    if (!answerSelected) {
+        score -= 1;
+        console.log(score);
+    }
+
     active = active + 1 <= lengthItems ? active + 1 : 0;
     reloadSlider();
-    loadQuestion();
+
+    if (questionIndex < questions.length) {
+        loadQuestion();
+    } else {
+        displayFinalScore();
+    }
+
+    answerSelected = false; // Reset for next question
 }
-function reloadSlider(){
+
+function reloadSlider() {
     slider.style.left = -items[active].offsetLeft + 'px';
-    // 
     let last_active_dot = document.querySelector('.slider .dots li.active');
-   // last_active_dot.classList.remove('active');
+    if (last_active_dot) last_active_dot.classList.remove('active');
     dots[active].classList.add('active');
 }
 
-start.onclick = function(){
+start.onclick = function() {
     active = active + 1 <= lengthItems ? active + 1 : 0;
     reloadSlider();
     loadQuestion();
     next.disabled = false;
     prev.disabled = false;
 }
-
 
 // Quiz functions
 const questions = [
@@ -89,30 +106,57 @@ const questions = [
     }
 ];
 
-
 let divisions = document.querySelectorAll('.innerItem');
 let count = 1;
 let questionIndex = 0;
+let score = 0;
 
 function loadQuestion() {
-    if(count<11 && questionIndex<10){
-    var subDiv = divisions[count];
-    var qstn = subDiv.getElementsByClassName('question')[0]; // Access the first element
-    var qstnObj = questions[questionIndex];
-    qstn.innerText = qstnObj.question;
-    
-    var buttons = subDiv.querySelectorAll('.ansButton button');
-    buttons.forEach((button, i) => {
-        button.innerText = qstnObj.choices[i];
-    });
+    if (count < 11 && questionIndex < 10) {
+        var subDiv = divisions[count];
+        var qstn = subDiv.getElementsByClassName('question')[0]; // Access the first element
+        var qstnObj = questions[questionIndex];
+        qstn.innerText = qstnObj.question;
+        
+        var buttons = subDiv.querySelectorAll('.ansButton button');
+        buttons.forEach((button, i) => {
+            button.innerText = qstnObj.choices[i];
+        });
+        evaluate(buttons, qstnObj);
+        count++;
+        questionIndex++;
+    } else {
+        count = 1;
+        questionIndex = 0;
+        next.disabled = true;
+        displayFinalScore();
+    }
+}
 
-    count++;
-    questionIndex++;
+function evaluate(buttons, qstnObj) {
+    buttons.forEach((button, i) => {
+        button.addEventListener('click', () => {
+            button.style.background = "purple";
+            if (i == qstnObj.correctAnswer) {
+                score = score + 4;
+                setInterval(()=>{
+                    button.style.background = "green";
+                },250);
+            } else {
+                score = score - 1;
+                setInterval(()=>{
+                    button.style.background = "red";
+                    buttons[qstnObj.correctAnswer].style.background = "green";
+                },250);
+            }
+            answerSelected = true;
+            console.log(score);
+        });
+    });
 }
-else{
-    count = 1;
-    questionIndex = 0;
-}
+
+function displayFinalScore() {
+    document.getElementById('finalScore').innerText = score;
 }
 
 

@@ -92,10 +92,15 @@
     height: 60px;
     border-radius: 30px;
     cursor: pointer;
+    background-color: green;
+    color: white;
 }
 .button:disabled {
     background: #cccccc;
     cursor: not-allowed;
+}
+.ansButton button{
+    background-color: aqua;
 }
 
 

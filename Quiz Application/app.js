@@ -10,6 +10,8 @@ prev.disabled = true;
 let lengthItems = items.length - 1;
 let active = 0;
 let answerSelected = false;
+let timerInterval;
+let timerElement;
 
 prev.onclick = function() {
     active = active - 1 >= 0 ? active - 1 : lengthItems;
@@ -19,15 +21,13 @@ prev.onclick = function() {
 next.onclick = function() {
     prev.disabled = false;
     loadNext();
-    
     answerSelected = false; // Reset for next question
 }
 
 function reloadSlider() {
     slider.style.left = -items[active].offsetLeft + 'px';
-    let last_active_dot = document.querySelector('.slider .dots li.active');
-    if (last_active_dot) last_active_dot.classList.remove('active');
-    dots[active].classList.add('active');
+    dots.forEach(dot => dot.classList.remove('active')); // Remove active class from all dots
+    dots[active].classList.add('active'); // Add active class to the current dot
 }
 
 start.onclick = function() {
@@ -92,24 +92,51 @@ const questions = [
     }
 ];
 
+
 let divisions = document.querySelectorAll('.innerItem');
 let count = 1;
 let questionIndex = 0;
 let score = 0;
-let timer = document.getElementById('timeLeft');
+
+function startTimer() {
+    let timeLeft = 20;
+    timerElement.innerText = `${timeLeft}s`;
+
+    timerInterval = setInterval(() => {
+        timeLeft -= 1;
+        timerElement.innerText = `Remaining time: ${timeLeft}s`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            if (!answerSelected) {
+                score -= 1;
+                console.log(score);
+                disableButtons(); // Disable all buttons
+            }
+            loadNext();
+        }
+    }, 1000);
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    startTimer();
+}
 
 function loadQuestion() {
     if (count < 11 && questionIndex < 10) {
-        var subDiv = divisions[count];
-        var qstn = subDiv.getElementsByClassName('question')[0]; // Access the first element
-        var qstnObj = questions[questionIndex];
+        let subDiv = divisions[count];
+        let qstn = subDiv.getElementsByClassName('question')[0]; // Access the first element
+        let qstnObj = questions[questionIndex];
         qstn.innerText = qstnObj.question;
-        var buttons = subDiv.querySelectorAll('.ansButton button');
+        let buttons = subDiv.querySelectorAll('.ansButton button');
         enableButtons(buttons);
         buttons.forEach((button, i) => {
-            button.innerText = qstnObj.choices[i];
+            button.innerText = `${i + 1}. ${qstnObj.choices[i]}`;
         });
         evaluateAndUpdate(buttons, qstnObj);
+        timerElement = subDiv.querySelector('.time');
+        resetTimer();
         count++;
         questionIndex++;
     } else {
@@ -124,27 +151,28 @@ function evaluateAndUpdate(buttons, qstnObj) {
     buttons.forEach((button, i) => {
         button.addEventListener('click', () => {
             button.style.background = "purple";
+            clearInterval(timerInterval); // Stop the timer when an answer is selected
             if (i == qstnObj.correctAnswer) {
-                score = score + 4;
-                setInterval(()=>{
+                score += 4;
+                setTimeout(() => {
                     button.style.background = "green";
-                    disbleButtons(buttons);
-                },250);
-                setTimeout(()=>{
+                    disableButtons(buttons); // Disable only the buttons for this question
+                }, 250);
+                setTimeout(() => {
                     loadNext();
-                },2000);
+                }, 2000);
 
             } else {
-                score = score - 1;
-                setInterval(()=>{
-                    for(var i = 0; i<buttons.length; i++){
-                        if(i!=qstnObj.correctAnswer){
-                            buttons[i].style.background = "red";
+                score -= 1;
+                setTimeout(() => {
+                    buttons.forEach((btn, idx) => {
+                        if (idx !== qstnObj.correctAnswer) {
+                            btn.style.background = "red";
                         }
-                    }
+                    });
                     buttons[qstnObj.correctAnswer].style.background = "green";
-                    disbleButtons(buttons);
-                },150);
+                    disableButtons(buttons); // Disable only the buttons for this question
+                }, 150);
             }
             answerSelected = true;
             console.log(score);
@@ -156,35 +184,37 @@ function displayFinalScore() {
     document.getElementById('finalScore').innerText = score;
 }
 
-function enableButtons(buttons){
-    for(var i = 0; i<buttons.length; i++){
-        buttons[i].disabled = false;
+function enableButtons(buttons) {
+    buttons.forEach(button => button.disabled = false);
+}
+
+function disableButtons(buttons) {
+    if (buttons) {
+        buttons.forEach(button => {
+            button.disabled = true;
+            button.style.cursor = "not-allowed";
+        });
+    } else {
+        // If no buttons are passed, disable all buttons in the current question
+        let allButtons = document.querySelectorAll('.ansButton button');
+        allButtons.forEach(button => {
+            button.disabled = true;
+            button.style.cursor = "not-allowed";
+        });
     }
 }
 
-function disbleButtons(buttons){
-    for(var i = 0; i<buttons.length; i++){
-        buttons[i].disabled = true;
-        buttons[i].style.cursor = "not-allowed";
-    }
-}
-
-async function timeRemaining(timer) {
-    
-}
-
-function loadNext(){
+function loadNext() {
     active = active + 1 <= lengthItems ? active + 1 : 0;
     reloadSlider();
-    // Reduce score if no answer was selected
-    if (!answerSelected) {
-        score -= 1;
-        console.log(score);
-    }
     if (questionIndex < questions.length) {
         loadQuestion();
     } else {
         displayFinalScore();
     }
-
 }
+
+let restart = document.querySelector('#reset');
+restart.addEventListener('click',()=>{
+    window.location.reload(true);
+});
